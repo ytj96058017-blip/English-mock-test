@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>2026학년도 중학교 3학년 2학기 영어 지필평가 실전 모의고사</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN for Portfolio Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nanum+Myeongjo:wght@700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+    * {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif-title {
+      font-family: 'Nanum Myeongjo', serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .paper-sheet {
+      background: #ffffff;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e2e8f0;
+    }
+
+    input[type="text"] {
+      font-size: 16px !important;
+    }
+
+    .choice-card:hover {
+      background-color: #eff6ff;
+      border-color: #2563eb;
+    }
+    .choice-card:active {
+      transform: scale(0.99);
+    }
+    .choice-card.selected {
+      background-color: #dbeafe;
+      border-color: #1d4ed8;
+      color: #1e3a8a;
+      font-weight: 600;
+    }
+
+    .passage-box {
+      background-color: #fcfcfd;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #2563eb;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    @keyframes redPulse {
+      0%, 100% { color: #dc2626; transform: scale(1); }
+      50% { color: #ef4444; transform: scale(1.05); }
+    }
+    .urgent-timer {
+      animation: redPulse 1s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <div id="app" class="flex-1 flex flex-col">
+    <!-- Global Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+      <div class="max-w-5xl mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shadow-xs shrink-0">
+            영어
+          </div>
+          <div>
+            <h1 class="serif-title text-sm sm:text-lg font-black tracking-tight text-slate-900 leading-tight">
+              중3 영어 지필평가 실전 모의고사
+            </h1>
+            <p class="hidden sm:block text-[11px] text-slate-500 font-medium">Lesson 5 (Journey into Your Mind) &middot; Lesson 6 (Find Your Passion) 전 영역 총괄 25문항</p>
+          </div>
+        </div>
+
+        <!-- Student Badge & Timer Header Info -->
+        <div id="headerExamInfo" class="hidden flex items-center space-x-2 sm:space-x-4">
+          <div class="text-right">
+            <span id="headerStudentName" class="text-xs font-bold text-slate-800 block truncate max-w-[80px] sm:max-w-none"></span>
+          </div>
+          <div class="flex items-center space-x-1.5 bg-slate-100 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg border border-slate-200">
+            <i class="fa-regular fa-clock text-slate-600 text-xs sm:text-sm"></i>
+            <span id="timerDisplay" class="font-mono font-bold text-xs sm:text-base text-slate-800">40:00</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- [화면 1] 시작 및 학생 인증 화면 -->
+    <section id="screenIntro" class="flex-1 flex items-center justify-center p-3 sm:p-6">
+      <div class="max-w-xl w-full paper-sheet rounded-2xl p-5 sm:p-10 my-2">
+        <div class="text-center mb-6 sm:mb-8 border-b border-slate-200 pb-5 sm:pb-6">
+          <span class="inline-block bg-blue-50 text-blue-700 text-[11px] sm:text-xs font-semibold px-3 py-0.5 rounded-full border border-blue-200 mb-2">
+            2026학년도 중학교 3학년 2학기 영어 지필평가 완벽 대비
+          </span>
+          <h2 class="serif-title text-xl sm:text-3xl font-black text-slate-900 tracking-tight mb-1.5">
+            영어 실전 모의평가
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500">
+            출제 범위: Lesson 5 &amp; Lesson 6 어휘·영영풀이, 핵심 문법, 의사소통, 본문 심층 독해 (25문항 100점 만점)
+          </p>
+        </div>
+
+        <div class="space-y-3.5 mb-6 sm:mb-8">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" for="inputPin">
+              학생 핀번호 (PIN 4~6자리)
+            </label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                <i class="fa-solid fa-key text-xs sm:text-sm"></i>
+              </span>
+              <input type="text" id="inputPin" inputmode="numeric" pattern="[0-9]*" maxlength="8" autocomplete="off" value="30512" placeholder="예: 30512"
+                class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-base sm:text-sm font-medium focus:outline-none focus:border-blue-600 focus:bg-white transition" />
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1">학습 성적이 구글 스프레드시트와 로컬 브라우저에 안전하게 누적 기록됩니다.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1" for="inputName">
+              학생 성명 (실명)
+            </label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                <i class="fa-solid fa-user text-xs sm:text-sm"></i>
+              </span>
+              <input type="text" id="inputName" maxlength="10" autocomplete="off" value="김세영" placeholder="예: 김세영"
+                class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-base sm:text-sm font-medium focus:outline-none focus:border-blue-600 focus:bg-white transition" />
+            </div>
+          </div>
+
+          <div id="introStatusMsg" class="hidden p-3 rounded-xl text-xs font-medium border"></div>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl p-3.5 sm:p-5 border border-slate-200 mb-6 sm:mb-8 text-xs text-slate-600 space-y-2 leading-relaxed">
+          <div class="font-bold text-slate-800 text-xs sm:text-sm flex items-center space-x-1.5 mb-1.5">
+            <i class="fa-solid fa-circle-info text-blue-600"></i>
+            <span>지필평가 출제 기준 및 시스템 안내</span>
+          </div>
+          <div>1. <strong>실전형 출제:</strong> 단순 뜻 암기를 지양하고, <strong>실제 교과서 본문 지문 기반 문맥 어휘·영영풀이</strong>로 출제</div>
+          <div>2. <strong>배점 및 문항:</strong> 5지선다형 총 25문항 (문항당 4점, 100점 만점), 제한 시간 40분</div>
+          <div>3. <strong>변별력 안배:</strong> 고난도 [상] 6문항, [중] 13문항, [하] 6문항으로 상위권 변별력 보장</div>
+          <div>4. <strong>학습지 100% 연계:</strong> ① 지문 속 문맥 어휘 및 영영풀이, ② 핵심 문법(관계부사, 분사구문, not only A but also B, 접속부사), ③ 의사소통 기능(불만족, 걱정, 다짐, 불필요), ④ 본문 심층 독해(다빈치의 요리 열정 &amp; 심리학의 조언)</div>
+        </div>
+
+        <div class="space-y-2.5">
+          <button type="button" id="btnStartExam" onclick="handleStartVerification(event)" 
+            class="w-full py-3.5 bg-blue-600 active:bg-blue-700 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center space-x-2 text-sm cursor-pointer select-none">
+            <span id="btnStartExamText">학생 확인 및 영어 모의고사 시작</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+          
+          <button type="button" id="btnOpenPortfolioFromIntro" onclick="handleCheckPortfolioFromIntro(event)" 
+            class="w-full py-2.5 bg-white active:bg-slate-100 text-slate-700 font-medium rounded-xl border border-slate-300 transition text-xs flex items-center justify-center space-x-1.5 cursor-pointer select-none">
+            <i class="fa-solid fa-chart-pie text-blue-600"></i>
+            <span>누적 영어 포트폴리오 바로 보기</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- [화면 2] 시험장 화면 (Test Screen) -->
+    <section id="screenExam" class="hidden flex-1 max-w-5xl w-full mx-auto p-2.5 sm:p-6 space-y-4 sm:space-y-6">
+      <!-- OMR Minimap & Progress -->
+      <div class="paper-sheet rounded-2xl p-3.5 sm:p-5">
+        <div class="flex items-center justify-between gap-2 mb-2.5 pb-2.5 border-b border-slate-200">
+          <div class="flex items-center space-x-2">
+            <span class="font-bold text-xs sm:text-sm text-slate-800">OMR 마킹 현황</span>
+            <span id="answeredCountBadge" class="text-[11px] sm:text-xs bg-blue-50 text-blue-700 font-semibold px-2 py-0.5 rounded-full border border-blue-200">
+              0 / 25 완료
+            </span>
+          </div>
+          <div class="flex items-center space-x-2 text-[11px] text-slate-500">
+            <span class="inline-flex items-center"><span class="w-2 h-2 rounded-full bg-rose-500 mr-1"></span>상 (변별력)</span>
+            <span class="inline-flex items-center"><span class="w-2 h-2 rounded-full bg-blue-600 mr-1"></span>중</span>
+            <span class="inline-flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-1"></span>하</span>
+          </div>
+        </div>
+
+        <div id="omrGrid" class="grid grid-cols-5 sm:grid-cols-10 md:grid-cols-25 gap-1.5 text-center text-xs font-bold"></div>
+      </div>
+
+      <!-- Main Question Sheet -->
+      <div class="paper-sheet rounded-2xl p-4 sm:p-8 min-h-[480px] flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3 sm:pb-4 mb-4 sm:mb-6">
+            <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+              <span id="qBadgeNum" class="text-base sm:text-xl font-black text-slate-900 serif-title">[01]</span>
+              <span id="qBadgeDiff" class="text-[11px] sm:text-xs px-2 py-0.5 rounded-md font-bold text-white shadow-xs">난이도</span>
+              <span id="qBadgeUnit" class="text-[11px] sm:text-xs px-2 py-0.5 rounded-md font-semibold bg-blue-50 text-blue-900 border border-blue-200 truncate max-w-[200px] sm:max-w-none">영역</span>
+              <span id="qBadgeTopic" class="text-[11px] sm:text-xs px-2 py-0.5 rounded-md font-semibold bg-slate-100 text-slate-700 border border-slate-200">핵심유형</span>
+            </div>
+            <div class="text-[11px] sm:text-xs text-slate-400 font-medium">배점: 4점</div>
+          </div>
+
+          <div class="space-y-4 mb-6 sm:mb-8">
+            <div id="qPassageContainer" class="hidden passage-box p-3.5 sm:p-5 rounded-xl text-xs sm:text-sm text-slate-800 leading-relaxed font-normal whitespace-pre-line"></div>
+            <div id="qText" class="text-sm sm:text-lg font-medium text-slate-900 leading-relaxed"></div>
+          </div>
+
+          <div id="qChoices" class="space-y-2 sm:space-y-2.5 mb-6 sm:mb-8"></div>
+        </div>
+
+        <!-- Question Bottom Action Bar -->
+        <div class="flex items-center justify-between pt-4 sm:pt-6 border-t border-slate-200">
+          <button type="button" id="btnPrevQ" onclick="navigateQuestion(-1)" 
+            class="px-3.5 py-2 sm:px-4 sm:py-2.5 bg-white border border-slate-300 active:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+            <span>이전 문항</span>
+          </button>
+
+          <div class="flex items-center space-x-2">
+            <button type="button" id="btnNextQ" onclick="navigateQuestion(1)" 
+              class="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-800 active:bg-slate-700 text-white text-xs sm:text-sm font-semibold rounded-xl transition flex items-center space-x-1.5">
+              <span>다음 문항</span>
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+            <button type="button" id="btnFinishExam" onclick="confirmSubmitExam()" 
+              class="hidden px-4 py-2 sm:px-5 sm:py-2.5 bg-blue-600 active:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition flex items-center space-x-1.5">
+              <i class="fa-solid fa-paper-plane text-xs"></i>
+              <span>답안 최종 제출</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- [화면 3] 채점 결과 및 오답 풀이 (Result Screen) -->
+    <section id="screenResult" class="hidden flex-1 max-w-5xl w-full mx-auto p-3 sm:p-6 space-y-4 sm:space-y-6">
+      <div class="paper-sheet rounded-2xl p-5 sm:p-8">
+        <div class="text-center max-w-md mx-auto mb-6 sm:mb-8 border-b border-slate-200 pb-5 sm:pb-6">
+          <span class="inline-block bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            <i class="fa-solid fa-circle-check mr-1"></i> 영어 지필평가 채점 완료
+          </span>
+          <h2 class="serif-title text-xl sm:text-3xl font-black text-slate-900 mb-1">
+            종합 성적 리포트
+          </h2>
+          <p id="resultStudentMeta" class="text-xs sm:text-sm text-slate-500"></p>
+          <div id="syncStatusBadge" class="mt-2 text-[11px] font-semibold text-slate-500">
+            <i class="fa-solid fa-spinner fa-spin mr-1"></i> 구글 시트에 성적 동기화 중...
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3 mb-4 sm:mb-6">
+          <div class="bg-slate-50 rounded-xl p-3 sm:p-4 border border-slate-200 text-center col-span-2 sm:col-span-1">
+            <div class="text-[11px] sm:text-xs text-slate-500 font-semibold mb-1">최종 득점</div>
+            <div class="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+              <span id="resTotalScore">0</span><span class="text-xs sm:text-sm font-normal text-slate-400"> / 100</span>
+            </div>
+            <span id="resScoreSummary" class="text-[10px] sm:text-[11px] text-blue-700 font-semibold mt-1 block">정답 0 / 오답 0</span>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-3 sm:p-4 border border-slate-200 text-center">
+            <div class="text-[11px] sm:text-xs text-slate-500 font-semibold mb-1">문맥 어휘 &amp; 영영</div>
+            <div class="text-lg sm:text-2xl font-bold text-blue-600 font-mono" id="resDomain1Score">0점</div>
+            <span class="text-[10px] text-slate-400">24점 만점</span>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-3 sm:p-4 border border-slate-200 text-center">
+            <div class="text-[11px] sm:text-xs text-slate-500 font-semibold mb-1">핵심 문법 어법</div>
+            <div class="text-lg sm:text-2xl font-bold text-indigo-600 font-mono" id="resDomain2Score">0점</div>
+            <span class="text-[10px] text-slate-400">24점 만점</span>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-3 sm:p-4 border border-slate-200 text-center">
+            <div class="text-[11px] sm:text-xs text-slate-500 font-semibold mb-1">본문 심층 독해</div>
+            <div class="text-lg sm:text-2xl font-bold text-teal-600 font-mono" id="resDomain3Score">0점</div>
+            <span class="text-[10px] text-slate-400">36점 만점</span>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-3 sm:p-4 border border-slate-200 text-center">
+            <div class="text-[11px] sm:text-xs text-slate-500 font-semibold mb-1">의사소통 (L&amp;S)</div>
+            <div class="text-lg sm:text-2xl font-bold text-amber-600 font-mono" id="resDomain4Score">0점</div>
+            <span class="text-[10px] text-slate-400">16점 만점</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-6 sm:mb-8 flex items-center justify-around text-xs">
+          <div class="text-center">
+            <span class="text-rose-600 font-bold block">고난도 [상]</span>
+            <span id="resDiffHard" class="font-mono font-bold text-slate-800 text-sm">0 / 6</span>
+          </div>
+          <div class="h-6 w-px bg-slate-300"></div>
+          <div class="text-center">
+            <span class="text-blue-600 font-bold block">중간 난도 [중]</span>
+            <span id="resDiffMed" class="font-mono font-bold text-slate-800 text-sm">0 / 13</span>
+          </div>
+          <div class="h-6 w-px bg-slate-300"></div>
+          <div class="text-center">
+            <span class="text-emerald-600 font-bold block">기본 개념 [하]</span>
+            <span id="resDiffEasy" class="font-mono font-bold text-slate-800 text-sm">0 / 6</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5">
+          <button type="button" onclick="handleViewPortfolio()" 
+            class="w-full sm:w-auto px-5 py-3 bg-blue-600 active:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-xs transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>영어 4대 영역 포트폴리오 분석 보기</span>
+          </button>
+          <button type="button" onclick="handleRestartClinic()" 
+            class="w-full sm:w-auto px-5 py-3 bg-white active:bg-slate-100 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl border border-slate-300 transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>틀린 문항 다시 풀기 (오답 클리닉)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Review Section -->
+      <div class="paper-sheet rounded-2xl p-4 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-slate-200">
+          <h3 class="serif-title text-base sm:text-xl font-bold text-slate-900">문항별 정답 및 심층 해설</h3>
+          <div class="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold">
+            <button type="button" id="filterTabAll" onclick="setReviewFilter('ALL')" class="px-3 py-1.5 rounded-lg bg-white shadow-xs text-slate-900 transition">전체 (25)</button>
+            <button type="button" id="filterTabWrong" onclick="setReviewFilter('WRONG')" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">오답만 보기</button>
+          </div>
+        </div>
+        <div id="reviewQuestionsContainer" class="space-y-4"></div>
+      </div>
+    </section>
+
+    <!-- [화면 4] 포트폴리오 화면 (Portfolio Screen) -->
+    <section id="screenPortfolio" class="hidden flex-1 max-w-5xl w-full mx-auto p-3 sm:p-6 space-y-4 sm:space-y-6">
+      <div class="paper-sheet rounded-2xl p-4 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200">
+          <div>
+            <div class="flex items-center space-x-2 mb-1">
+              <span class="text-[11px] font-bold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">ENGLISH LEARNING PORTFOLIO</span>
+              <span id="portfolioPinBadge" class="text-xs font-mono text-slate-500">PIN: -</span>
+            </div>
+            <h2 class="serif-title text-lg sm:text-3xl font-black text-slate-900">
+              <span id="portfolioStudentName">-</span> 학생의 누적 영어 성취도 분석
+            </h2>
+          </div>
+          <button type="button" onclick="handleBackFromPortfolio()" 
+            class="px-3.5 py-1.5 bg-white active:bg-slate-100 text-slate-700 text-xs font-bold rounded-xl border border-slate-300 transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>돌아가기</span>
+          </button>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 sm:p-5 border border-blue-200 mb-6">
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-slate-800 mb-0.5">AI 맞춤 영어 학습 진단 피드백</h4>
+              <p id="portfolioAiFeedback" class="text-xs sm:text-sm text-slate-600 leading-relaxed">데이터를 분석 중입니다...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">회차별 종합 득점 추이</h4>
+            <div class="relative h-52"><canvas id="chartScoreRounds"></canvas></div>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">영어 4대 핵심 영역 레이더</h4>
+            <div class="relative h-52"><canvas id="chartDomainRadar"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Custom Modal -->
+  <div id="customModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4">
+    <div class="bg-white max-w-sm w-full rounded-2xl p-5 sm:p-6 shadow-2xl border border-slate-200 text-center">
+      <div id="modalIconContainer" class="w-10 h-10 rounded-full mx-auto flex items-center justify-center text-base mb-3"></div>
+      <h3 id="modalTitle" class="text-sm sm:text-base font-bold text-slate-900 mb-1.5"></h3>
+      <p id="modalDesc" class="text-xs text-slate-600 mb-5 leading-relaxed"></p>
+      <div id="modalButtons" class="flex items-center justify-center space-x-2"></div>
+    </div>
+  </div>
+
+  <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-400">
+    <p>중학교 3학년 영어 지필평가 모의평가 시스템 &middot; 2026학년도 2학기 총괄</p>
+  </footer>
+
+  <script>
+    const safeStorage = {
+      _mem: {},
+      getItem(key) {
+        try { return localStorage.getItem(key); } catch (e) { return this._mem[key] || null; }
+      },
+      setItem(key, val) {
+        try { localStorage.setItem(key, val); } catch (e) { this._mem[key] = String(val); }
+      },
+      removeItem(key) {
+        try { localStorage.removeItem(key); } catch (e) { delete this._mem[key]; }
+      }
+    };
+
+    // User's Google Apps Script Endpoint URL
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjTmIahwaDLmJXAV96dpY2bsrfaN83h2vj5pl42juYoYo8f7WVGwfoaIG-MWbbxF0F/exec";
+    const EXAM_DURATION_SEC = 40 * 60; // 40분
+
+    const DOMAIN_KEYS = [
+      "문맥 어휘 & 영영",
+      "핵심 문법 어법",
+      "본문 심층 독해",
+      "의사소통 (L&S)"
+    ];
+
+    // 25개 고유 평가 슬롯 (난이도 상 6문항, 중 13문항, 하 6문항)
+    // 58페이지 학습지의 어휘, 영영풀이, 본문 독해, L&S, 문법 완벽 100% 반영
+    const EXAM_SLOT_BANK = [
+      // [01] (하) 지문 속 문맥 어휘 - Lesson 6
+      {
+        id: "ENG_Q01", difficulty: "하", unit: "문맥 어휘 & 영영", subTopic: "지문 속 문맥 어휘",
+        passage: "In 1473, twenty-year-old Leonardo da Vinci worked as a cook at a restaurant in Florence, Italy. When he (A)took charge of the kitchen, da Vinci changed the menu completely. He made simple but artistic dishes like fish with a few carrot slices.",
+        text: "위 지문의 밑줄 친 (A)took charge of의 문맥상 의미로 가장 알맞은 것은?",
+        choices: ["~을 담당하다, 책임을 맡다", "~을 비판하다", "~을 예약하다", "~을 피하려고 달아나다", "~에 불평하다"],
+        answer: 0,
+        explanation: "take charge of는 '~을 책임지다, 담당하다(=be in charge of)'라는 뜻으로 부엌의 운영을 책임지게 되었음을 나타냅니다."
+      },
+      // [02] (중) 영영풀이 매칭 - Lesson 6
+      {
+        id: "ENG_Q02", difficulty: "중", unit: "문맥 어휘 & 영영", subTopic: "영영풀이 매칭",
+        passage: "[Word Definition]\n\"to make an object or place more attractive, especially by adding things to it in order to beautify it\"",
+        text: "위 영영풀이에 해당하는 단어로 본문(Lesson 6)에 등장하는 것은?",
+        choices: ["decorate", "pursue", "complain", "scare", "graduate"],
+        answer: 0,
+        explanation: "물건이나 장소를 더 매력적으로 만들기 위해 무언가를 덧붙여 꾸미는 것은 'decorate(장식하다)'입니다."
+      },
+      // [03] [고난도 상 ①] 문맥상 어휘의 쓰임이 어색한 것 고르기 - Lesson 6
+      {
+        id: "ENG_Q03", difficulty: "상", unit: "문맥 어휘 & 영영", subTopic: "문맥상 어색한 어휘",
+        passage: "A few years later, da Vinci opened a restaurant with his friend Sandro Botticelli. He wanted to create a place where people could try his ①innovative food. They put up a ②beautifully painted sign. Da Vinci believed that people would soon ③appreciate his creative cooking. Unfortunately, customers were ④dissatisfied with the strange small portions. As a result, his new restaurant became an ⑤enormous success.",
+        text: "위 글의 밑줄 친 ①~⑤ 중 문맥상 낱말의 쓰임이 적절하지 않은 것은?",
+        choices: ["⑤enormous success", "①innovative", "②beautifully", "③appreciate", "④dissatisfied"],
+        answer: 0,
+        explanation: "손님들이 실망하여 다빈치가 믿었던 일은 절대로 일어나지 않았고(that never happened), 결국 실패했으므로 'enormous success(거대한 성공)'는 문맥상 정반대의 잘못된 표현입니다."
+      },
+      // [04] (중) 지문 속 어휘 빈칸 추론 - Lesson 5
+      {
+        id: "ENG_Q04", difficulty: "중", unit: "문맥 어휘 & 영영", subTopic: "지문 속 어휘 빈칸",
+        passage: "Psychology is the study of the human mind and (   A   ), so it can help you find a (   B   ) to your problem.\n- Amy Cuddy says our bodies change our minds, and our minds can change how we act.",
+        text: "위 지문의 빈칸 (A)와 (B)에 들어갈 낱말이 순서대로 바르게 짝지어진 것은?",
+        choices: ["behavior - solution", "behavior - celebration", "anniversary - pressure", "psychology - behavior", "stranger - reservation"],
+        answer: 0,
+        explanation: "심리학은 인간의 마음과 행동(behavior)에 관한 연구이며, 문제에 대한 해결책(solution)을 찾는 데 도움을 줍니다."
+      },
+      // [05] (하) 영영풀이 매칭 - Lesson 5
+      {
+        id: "ENG_Q05", difficulty: "하", unit: "문맥 어휘 & 영영", subTopic: "영영풀이 매칭",
+        passage: "[Word Definition]\n\"a person, team, or group competing with others for the same goal or superiority\"",
+        text: "다음 영영풀이에 해당하는 단어로 알맞은 것은?",
+        choices: ["rival", "stranger", "customer", "psychologist", "author"],
+        answer: 0,
+        explanation: "같은 목표나 우위를 위해 다른 사람과 경쟁하는 상대방은 'rival(경쟁자)'입니다."
+      },
+      // [06] (중) 문맥상 표현 활용 - Lesson 5
+      {
+        id: "ENG_Q06", difficulty: "중", unit: "문맥 어휘 & 영영", subTopic: "문맥상 표현 활용",
+        passage: "Taeho told a complete stranger sitting beside him about his problem. That is because we do not have to worry about being (       ) or seeing them again.",
+        text: "위 지문의 빈칸에 들어가기에 가장 적절한 형태의 단어는?",
+        choices: ["judged", "celebrated", "performed", "decorated", "chewed"],
+        answer: 0,
+        explanation: "낯선 사람에게 고민을 털어놓는 이유는 다른 사람의 시선에 의해 '평가받을(judged)' 걱정을 하지 않아도 되기 때문입니다."
+      },
+      // [07] (하) 핵심 문법: 관계부사 기본 - Lesson 6
+      {
+        id: "ENG_Q07", difficulty: "하", unit: "핵심 문법 어법", subTopic: "관계부사 기본 선택",
+        passage: "He wanted to create a place (       ) people could try his innovative food.",
+        text: "위 문장의 빈칸에 들어갈 알맞은 관계부사는?",
+        choices: ["where", "when", "why", "how", "which"],
+        answer: 0,
+        explanation: "선행사가 장소를 나타내는 명사 'a place'이고 뒤에 완전한 절이 이어지므로 장소의 관계부사 'where'가 적절합니다."
+      },
+      // [08] [고난도 상 ②] 핵심 문법: 관계부사와 전치사+관계대명사 전환
+      {
+        id: "ENG_Q08", difficulty: "상", unit: "핵심 문법 어법", subTopic: "관계부사 전환 구문",
+        passage: "Da Vinci has wasted his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet.",
+        text: "위 밑줄 친 'the reason why'와 바꿔 쓸 수 있는 표현으로 가장 올바른 것은?",
+        choices: [
+          "the reason for which",
+          "the reason in which",
+          "the reason on which",
+          "the reason at which",
+          "the reason by which"
+        ],
+        answer: 0,
+        explanation: "이유의 관계부사 why는 「for which」로 바꿔 쓸 수 있습니다."
+      },
+      // [09] (중) 핵심 문법: the way와 how의 결합 규칙
+      {
+        id: "ENG_Q09", difficulty: "중", unit: "핵심 문법 어법", subTopic: "관계부사 how 규칙",
+        text: "다음 중 관계부사의 어법상 쓰임이 틀린 문장을 고르시오.",
+        choices: [
+          "He taught me the way how he solved difficult math problems.",
+          "He taught me the way he solved difficult math problems.",
+          "He taught me how he solved difficult math problems.",
+          "Sunday is the only day when I can completely relax.",
+          "This is the bakery where my aunt works every morning."
+        ],
+        answer: 0,
+        explanation: "선행사 the way와 관계부사 how는 절대로 함께 나란히 쓸 수 없으며, 'the way' 또는 'how' 중 하나만 써야 합니다."
+      },
+      // [10] (하) 핵심 문법: 분사구문 기본 전환 - Lesson 5
+      {
+        id: "ENG_Q10", difficulty: "하", unit: "핵심 문법 어법", subTopic: "분사구문 기본 전환",
+        passage: "(Because she felt) nervous, Jisu was carefully studying her notes in her chair.",
+        text: "위 괄호 친 부사절을 분사구문으로 가장 알맞게 전환한 것은?",
+        choices: [
+          "Feeling",
+          "Felt",
+          "To feel",
+          "Having feeling",
+          "Feel"
+        ],
+        answer: 0,
+        explanation: "접속사 Because 생략, 주어 she 생략 후 동사 felt의 원형인 feel에 -ing를 붙여 'Feeling'이 됩니다."
+      },
+      // [11] [고난도 상 ③] 핵심 문법: 분사구문의 다양한 문맥적 의미와 복원
+      {
+        id: "ENG_Q11", difficulty: "상", unit: "핵심 문법 어법", subTopic: "분사구문 복원 및 시제",
+        passage: "Wanting to clear his mind, Taeho decided to take a day trip on a train by himself.",
+        text: "위 분사구문 'Wanting to clear his mind'를 원래의 완전한 부사절로 가장 적절하게 복원한 것은?",
+        choices: [
+          "Because he wanted to clear his mind",
+          "Although he wants to clear his mind",
+          "If he wanting to clear his mind",
+          "While he is wanted to clear his mind",
+          "Before he want to clear his mind"
+        ],
+        answer: 0,
+        explanation: "주절의 시제가 과거(decided)이고 주어가 Taeho(he)이며 이유를 나타내므로 'Because he wanted to clear his mind'가 올바른 원래 부사절입니다."
+      },
+      // [12] (중) 핵심 문법: not only A but also B 구문 및 병렬 구조
+      {
+        id: "ENG_Q12", difficulty: "중", unit: "핵심 문법 어법", subTopic: "상관접속사 병렬구조",
+        passage: "You will not only feel sure about yourself but also (   A   ) confident to other people.\nHe was not only a great painter but also a creative cook.",
+        text: "위 문장의 빈칸 (A)에 들어가기에 어법상 가장 적절한 형태는?",
+        choices: ["look", "looking", "looked", "to look", "looks"],
+        answer: 0,
+        explanation: "not only A but also B 구문에서 A와 B는 문법적으로 대등한 형태여야 합니다. will 뒤의 동사원형 feel과 병렬을 이루어 'look'이 와야 합니다."
+      },
+      // [13] (하) 의사소통 기능: 불만족 표현하기 - Lesson 6
+      {
+        id: "ENG_Q13", difficulty: "하", unit: "의사소통 (L&S)", subTopic: "불만족 표현",
+        passage: "A: How about your steak?\nB: Honestly, (                               ). It's too rare for me.",
+        text: "위 대화의 빈칸에 들어갈 표현으로 학습지(L&S)에 제시된 것은?",
+        choices: [
+          "I'm not satisfied with the steak",
+          "I'm really looking forward to it",
+          "I'm proud of the steak",
+          "I have no doubt about it",
+          "I can't agree with you"
+        ],
+        answer: 0,
+        explanation: "상대방에게 불만족스러운 감정을 나타낼 때 쓰는 대표 표현은 'I'm not satisfied with ~'입니다."
+      },
+      // [14] (중) 의사소통 기능: 다짐 말하기 - Lesson 6
+      {
+        id: "ENG_Q14", difficulty: "중", unit: "의사소통 (L&S)", subTopic: "다짐하기",
+        passage: "Waitress: I'm really sorry for the inconvenience.\nCustomer: That's O.K.\nWaitress: (                                    ) next time you visit.",
+        text: "위 대화의 빈칸에 알맞은 다짐의 표현은?",
+        choices: [
+          "I promise we'll provide you with a better experience",
+          "I wonder if you could help me cook",
+          "You don't have to pay the bill anywhere",
+          "I'm worried about your health",
+          "Never mind about the customer"
+        ],
+        answer: 0,
+        explanation: "자신의 다짐과 약속을 전할 때 'I promise (that) ~' 패턴을 사용합니다."
+      },
+      // [15] (하) 의사소통 기능: 걱정 표현하기 - Lesson 5
+      {
+        id: "ENG_Q15", difficulty: "하", unit: "의사소통 (L&S)", subTopic: "걱정 표현",
+        passage: "A: Sports Day is next Friday. I can't wait for it!\nB: Really? I'm actually (          ) the 800-meter relay because I'm the last runner.",
+        text: "위 대화의 빈칸에 들어가기에 가장 알맞은 표현은?",
+        choices: [
+          "worried about",
+          "satisfied with",
+          "famous for",
+          "tired of",
+          "used to"
+        ],
+        answer: 0,
+        explanation: "자신의 걱정과 불안을 나타낼 때 'be worried about ~' 표현을 사용합니다."
+      },
+      // [16] (중) 의사소통 기능: 불필요·의무 부인하기 - Lesson 5
+      {
+        id: "ENG_Q16", difficulty: "중", unit: "의사소통 (L&S)", subTopic: "의무 부인 표현",
+        passage: "A: Don't you think I should practice running every single day?\nB: No, (                          ). It's just a school race. Relax!",
+        text: "상대방에게 '그렇게 할 필요까지는 없다'고 안심시킬 때 알맞은 말은?",
+        choices: [
+          "you don't have to do that",
+          "you must not do that",
+          "you should never try it",
+          "you ought to do that right now",
+          "you are not allowed to run"
+        ],
+        answer: 0,
+        explanation: "~할 필요가 없다는 의무 부인은 'You don't have to ~'(=You don't need to)를 사용합니다."
+      },
+      // [17] (중) 본문 독해: 다빈치의 요리 철학 - Lesson 6
+      {
+        id: "ENG_Q17", difficulty: "중", unit: "본문 심층 독해", subTopic: "세부 내용 파악",
+        passage: "When he took charge of the kitchen, da Vinci changed the menu completely. He made simple but artistic dishes like fish with a few carrot slices. Some dishes were even decorated with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As a result, da Vinci lost his job.",
+        text: "위 글을 통해 알 수 있는 당시 손님들이 다빈치의 요리에 불만을 품은 까닭은?",
+        choices: [
+          "푸짐한 양의 고기 요리에 익숙해 있었기 때문에",
+          "음식 가격이 너무 비쌌기 때문에",
+          "생선 요리에 소금이 전혀 들어가지 않아서",
+          "꽃으로 장식된 접시가 깨끗하지 않아서",
+          "다빈치가 요리를 너무 늦게 가져다주었기 때문에"
+        ],
+        answer: 0,
+        explanation: "손님들은 고기가 푸짐하게 담긴 요리(dishes with big servings of meat)에 익숙해 있었기 때문에 소량의 예술적인 음식에 불만을 가졌습니다."
+      },
+      // [18] [고난도 상 ④] 본문 독해: 다빈치의 주방 발명품의 한계 추론 - Lesson 6
+      {
+        id: "ENG_Q18", difficulty: "상", unit: "본문 심층 독해", subTopic: "내용 추론 및 평가",
+        passage: "Da Vinci did not stop at cooking creative dishes. He wanted to cook much more quickly and easily. Thus, he invented new machines for his kitchen. He created machines that could crush vegetables and pull spaghetti. He even made a device that could scare frogs away from the water tank. Surely, they were all very innovative, but most of them were too big or too difficult to use.",
+        text: "위 글에 나타난 다빈치의 주방 기계들에 대한 설명으로 사실과 다른 것은?",
+        choices: [
+          "기계들이 매우 작고 다루기 쉬워 당시 밀라노의 모든 주방에 널리 보급되었다.",
+          "요리를 더 빠르고 쉽게 하기 위해 발명되었다.",
+          "채소를 으깨고 스파게티 면을 뽑는 기계가 있었다.",
+          "물탱크에서 개구리를 쫓아내는 장치도 포함되어 있었다.",
+          "매우 혁신적인 기계들이었지만 크기가 너무 크거나 사용하기 어려웠다."
+        ],
+        answer: 0,
+        explanation: "기계들이 혁신적이긴 했으나 '너무 크거나 사용하기 너무 어려웠다(too big or too difficult to use)'고 명시되어 있으므로 널리 보급되었다는 것은 사실이 아닙니다."
+      },
+      // [19] (중) 본문 독해: 〈최후의 만찬〉 창작 배경 - Lesson 6
+      {
+        id: "ENG_Q19", difficulty: "중", unit: "본문 심층 독해", subTopic: "인과 관계 파악",
+        passage: "In 1495, Sforza asked da Vinci to make a grand painting on the wall of a church in Milan. Da Vinci gladly took on the project because he had always been interested in food. He spent a lot of time cooking all kinds of food to decide what to put on the table in his picture. People from the church complained that da Vinci had wasted his time in the kitchen for over a year.",
+        text: "다빈치가 〈최후의 만찬〉 벽화 작업을 기꺼이 수락하고 부엌에서 오랜 시간을 보낸 주된 이유는?",
+        choices: [
+          "그림 속 식탁 위에 올릴 음식을 결정하기 위해 온갖 요리를 직접 해보느라",
+          "교회의 건축 설계도를 수정하기 위해",
+          "그림에 사용할 천연 물감을 개발하느라",
+          "스포르차 공작과의 식사 약속을 지키기 위해",
+          "화가로서의 활동을 완전히 그만두기로 결심해서"
+        ],
+        answer: 0,
+        explanation: "다빈치는 그림 속 식탁 위에 어떤 음식을 올릴지 결정하기 위해(to decide what to put on the table in his picture) 부엌에서 직접 요리하느라 1년 넘게 시간을 보냈습니다."
+      },
+      // [20] [고난도 상 ⑤] 본문 독해: 에이미 커디의 심리학 이론 - Lesson 5
+      {
+        id: "ENG_Q20", difficulty: "상", unit: "본문 심층 독해", subTopic: "핵심 원리 추론",
+        passage: "According to Amy Cuddy, a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events. Our bodies change our minds, and our minds can change our behavior. Do you want to feel confident? Stand with your feet apart, and place your hands on your hips. You will not only feel sure about yourself but also look confident to other people.",
+        text: "위 글의 핵심 요지(Main Idea)로 가장 적절한 것은?",
+        choices: [
+          "신체의 당당한 자세가 우리의 마음가짐을 바꾸고 나아가 행동까지 변화시킬 수 있다.",
+          "발표 불안은 약물 치료를 통해서만 완전히 극복할 수 있다.",
+          "성공적인 발표를 위해서는 밤을 새워 발표 노트를 암기해야 한다.",
+          "자신감이 넘치는 척 연기하는 것은 타인을 속이는 위험한 행동이다.",
+          "원더우먼 자세는 오직 운동선수들의 근력 향상을 위해서만 고안되었다."
+        ],
+        answer: 0,
+        explanation: "에이미 커디 교수의 이론 핵심은 신체 자세의 변화가 마음에 영향을 미치고, 마음이 다시 행동을 변화시킨다(Our bodies change our minds, and our minds can change our behavior)는 점입니다."
+      },
+      // [21] (중) 본문 독해: 낯선 사람에게 고민을 털어놓는 이유 - Lesson 5
+      {
+        id: "ENG_Q21", difficulty: "중", unit: "본문 심층 독해", subTopic: "이유 및 동기 파악",
+        passage: "Strangely enough, we often tell strangers about our problems just like Taeho. That is because we do not have to worry about being judged or seeing them again. If you have a problem that you cannot share with your family or friends, try talking to a stranger. You will feel much better.",
+        text: "사람들이 가족이나 친구에게 말하기 힘든 고민을 기차 옆자리 낯선 이에게 털어놓는 심리적 이유로 지문에 제시된 것은?",
+        choices: [
+          "평가받거나 그 사람을 다시 마주칠 걱정을 할 필요가 없기 때문에",
+          "낯선 사람들이 항상 전문적인 심리 상담 자격증을 지니고 있기 때문에",
+          "비밀을 누설할 경우 법적인 보상을 받을 수 있어서",
+          "가족에게 고민을 말하면 돈이 많이 들기 때문에",
+          "기차 승차권에 상담 비용이 포함되어 있어서"
+        ],
+        answer: 0,
+        explanation: "지문에 'we do not have to worry about being judged or seeing them again(평가받거나 다시 만날 걱정이 없기 때문)'이라고 직접 언급되어 있습니다."
+      },
+      // [22] (중) 본문 독해: 벤저민 프랭클린 효과의 실천 원리 - Lesson 5
+      {
+        id: "ENG_Q22", difficulty: "중", unit: "본문 심층 독해", subTopic: "원리 적용",
+        passage: "Benjamin Franklin once had a political rival who did not like him at all. Franklin asked his rival to lend him a rare book for a few days. When Franklin returned the book, he thanked him deeply. Since that day, his rival became a good friend. Franklin famously said, \"Enemies who do you one favor will want to do more.\" If you want to turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.",
+        text: "위 글을 읽고 경쟁자를 내 편이나 친구로 만들고 싶을 때 취해야 할 올바른 행동은?",
+        choices: [
+          "경쟁자에게 먼저 작은 호의나 부탁을 정중하게 요청한다.",
+          "경쟁자가 원하지 않는 선물을 계속해서 보낸다.",
+          "경쟁자의 비밀을 주변 사람들에게 폭로한다.",
+          "경쟁자에게 희귀한 책을 영원히 돌려주지 않는다.",
+          "경쟁자가 부탁하기 전에 먼저 다가가 모든 일을 대신 처리해 준다."
+        ],
+        answer: 0,
+        explanation: "지문 마지막에 'don't do your rival a favor. Instead, ask your rival to do you a favor(상대에게 호의를 베풀지 말고, 오히려 상대에게 부탁을 하라)'라고 명시되어 있습니다."
+      },
+      // [23] [고난도 상 ⑥] 본문 전체 내용 일치/불일치 - 통합 추론
+      {
+        id: "ENG_Q23", difficulty: "상", unit: "본문 심층 독해", subTopic: "사실적 이해 종합",
+        text: "Lesson 5와 Lesson 6의 학습지 본문 내용과 일치하지 않는 것은?",
+        choices: [
+          "다빈치는 평생 요리에 전혀 관심이 없었으며 루도비코 스포르차의 강요로 억지로 요리를 시작했다.",
+          "지수는 발표 5분 전 원더우먼 자세를 취한 후 긴장감을 덜어낼 수 있었다.",
+          "태호는 전문 농부가 되고 싶은 꿈이 있었지만 부모님이나 친구들이 이해하지 못할까 봐 걱정했다.",
+          "다빈치는 친구 산드로 보티첼리와 함께 식당을 열고 혁신적인 요리를 선보였다.",
+          "벤저민 프랭클린은 정적에게 며칠 동안 귀한 책을 빌려달라고 부탁함으로써 관계를 개선했다."
+        ],
+        answer: 0,
+        explanation: "다빈치는 성공한 요리사가 되진 못했으나 평생 요리에 큰 흥미를 보였고(showed great interest in cooking throughout his life), 주방 책임을 맡았을 때 요리 열정을 추구할 기회를 얻어 매우 행복해했습니다."
+      },
+      // [24] (중) 지문 속 접속부사 빈칸 완성 - Lesson 5 & 6
+      {
+        id: "ENG_Q24", difficulty: "중", unit: "핵심 문법 어법", subTopic: "접속부사 활용",
+        passage: "(A) He was an active person. (       ), his brother is shy and quiet.\n(B) He didn't like his job. (       ), he decided to quit.\n(C) He wanted to cook more quickly. (       ), he invented new machines.",
+        text: "위 문장들의 빈칸에 들어갈 접속부사가 바르게 짝지어진 것은?",
+        choices: [
+          "However - Thus - Thus",
+          "Thus - However - However",
+          "However - However - Thus",
+          "Thus - Thus - However",
+          "Otherwise - Thus - However"
+        ],
+        answer: 0,
+        explanation: "(A)는 대조이므로 'However', (B)와 (C)는 원인에 따른 결과이므로 'Thus'가 적절합니다."
+      },
+      // [25] (하) 본문 결론 문맥적 의미 파악 - Lesson 6
+      {
+        id: "ENG_Q25", difficulty: "하", unit: "본문 심층 독해", subTopic: "결론 파악",
+        passage: "Now that you know all about his secret passion for cooking, you will never look at The Last Supper the same way.",
+        text: "위 글의 'you will never look at The Last Supper the same way'가 의미하는 바로 가장 알맞은 것은?",
+        choices: [
+          "다빈치의 요리에 대한 남다른 열정을 알게 되었으므로 작품 속 식탁과 음식을 새로운 시각으로 보게 될 것이다.",
+          "최후의 만찬 그림이 심하게 훼손되어 더 이상 관람할 수 없게 될 것이다.",
+          "다빈치가 화가로서 실패했음을 알게 되어 실망할 것이다.",
+          "그림에 그려진 인물들의 얼굴 표정을 절대 기억하지 못할 것이다.",
+          "이탈리아 밀라노의 교회를 다시는 방문하지 않을 것이다."
+        ],
+        answer: 0,
+        explanation: "다빈치의 요리에 대한 숨은 열정과 부엌에서의 고민을 알게 되었으므로 최후의 만찬 그림을 이전과 동일한 방식으로 보지 않고 새롭게 보게 될 것이라는 뜻입니다."
+      }
+    ];
+
+    const state = {
+      studentPin: "30512",
+      studentName: "김세영",
+      verifiedStatus: null,
+      currentExamRound: 1,
+      examQuestions: [],
+      currentQuestionIndex: 0,
+      userAnswers: {},
+      timeRemaining: EXAM_DURATION_SEC,
+      timerInterval: null,
+      examStartTime: null,
+      examSubmitted: false,
+      reviewFilter: 'ALL',
+      scoreData: null
+    };
+
+    let roundsChartInstance = null;
+    let radarChartInstance = null;
+
+    function saveStudentPortfolioLocally(pin, name, roundData, itemLogs) {
+      try {
+        const key = `eng_full_portfolio_${pin}`;
+        let portfolio = { 
+          name: name, 
+          pin: pin, 
+          rounds: [], 
+          domainStats: {
+            "문맥 어휘 & 영영": { total: 0, correct: 0 },
+            "핵심 문법 어법": { total: 0, correct: 0 },
+            "본문 심층 독해": { total: 0, correct: 0 },
+            "의사소통 (L&S)": { total: 0, correct: 0 }
+          }
+        };
+        const saved = safeStorage.getItem(key);
+        if (saved) {
+          try { portfolio = JSON.parse(saved); } catch (e) {}
+        }
+
+        portfolio.name = name;
+        portfolio.rounds.push(roundData);
+
+        if (itemLogs && itemLogs.length > 0) {
+          itemLogs.forEach(item => {
+            const unit = item.unit || "본문 심층 독해";
+            if (!portfolio.domainStats[unit]) {
+              portfolio.domainStats[unit] = { total: 0, correct: 0 };
+            }
+            portfolio.domainStats[unit].total += 1;
+            if (item.isCorrect) portfolio.domainStats[unit].correct += 1;
+          });
+        }
+
+        safeStorage.setItem(key, JSON.stringify(portfolio));
+        return portfolio;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function getStudentPortfolioLocally(pin) {
+      try {
+        const saved = safeStorage.getItem(`eng_full_portfolio_${pin}`);
+        return saved ? JSON.parse(saved) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function callServerJsonp(action, params = {}, timeoutMs = 4500) {
+      return new Promise((resolve, reject) => {
+        const callbackName = 'gas_eng_cb_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+        const script = document.createElement('script');
+        let timer = null;
+
+        window[callbackName] = function(data) {
+          cleanup();
+          resolve(data);
+        };
+
+        function cleanup() {
+          if (timer) clearTimeout(timer);
+          if (script.parentNode) script.parentNode.removeChild(script);
+          delete window[callbackName];
+        }
+
+        timer = setTimeout(() => {
+          cleanup();
+          reject(new Error("서버 응답 지연"));
+        }, timeoutMs);
+
+        script.onerror = function() {
+          cleanup();
+          reject(new Error("네트워크 연결 실패"));
+        };
+
+        const queryParts = [`action=${encodeURIComponent(action)}`, `callback=${callbackName}`];
+        for (const k in params) {
+          queryParts.push(`${encodeURIComponent(k)}=${encodeURIComponent(typeof params[k] === 'object' ? JSON.stringify(params[k]) : params[k])}`);
+        }
+
+        script.src = `${GOOGLE_SCRIPT_URL}?${queryParts.join('&')}`;
+        document.body.appendChild(script);
+      });
+    }
+
+    function shuffleChoices(choices, correctIndex) {
+      const items = choices.map((c, i) => ({ text: c, isCorrect: i === correctIndex }));
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      return {
+        choices: items.map(it => it.text),
+        answerIndex: items.findIndex(it => it.isCorrect)
+      };
+    }
+
+    function generateEnglishExamStep3() {
+      return EXAM_SLOT_BANK.map((q, idx) => {
+        const shuffled = shuffleChoices(q.choices, q.answer);
+        return {
+          ...q,
+          qNum: idx + 1,
+          choices: shuffled.choices,
+          answer: shuffled.answerIndex
+        };
+      });
+    }
+
+    function showStatusMessage(msg, type) {
+      const el = document.getElementById('introStatusMsg');
+      if (!el) return;
+      el.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border-red-200', 'bg-blue-50', 'text-blue-900', 'border-blue-200', 'bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+      if (type === 'error') {
+        el.classList.add('bg-red-50', 'text-red-700', 'border-red-200');
+      } else if (type === 'success') {
+        el.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+      } else {
+        el.classList.add('bg-blue-50', 'text-blue-900', 'border-blue-200');
+      }
+      el.textContent = msg;
+    }
+
+    async function handleStartVerification(event) {
+      if (event && event.preventDefault) event.preventDefault();
+
+      const pin = document.getElementById('inputPin').value.trim();
+      const name = document.getElementById('inputName').value.trim();
+      const btn = document.getElementById('btnStartExam');
+      const btnText = document.getElementById('btnStartExamText');
+
+      if (!pin || pin.length < 3) {
+        showStatusMessage('학생 핀번호를 입력해주세요.', 'error');
+        return;
+      }
+      if (!name) {
+        showStatusMessage('학생 성명을 입력해주세요.', 'error');
+        return;
+      }
+
+      state.studentPin = pin;
+      state.studentName = name;
+
+      btn.disabled = true;
+      btnText.textContent = '확인 중...';
+      showStatusMessage('구글 시트 백엔드와 연동 중입니다...', 'info');
+
+      try {
+        const data = await callServerJsonp('VERIFY_STUDENT', { pin, name }, 4000);
+        if (data && data.success) {
+          state.verifiedStatus = data.status;
+          state.currentExamRound = (data.examCount || 0) + 1;
+          showStatusMessage(data.message, 'success');
+          setTimeout(() => beginExam(generateEnglishExamStep3()), 300);
+          return;
+        }
+      } catch (err) {
+        console.warn("Server verify fallback to local state:", err);
+      }
+
+      const localPf = getStudentPortfolioLocally(pin);
+      state.currentExamRound = (localPf && localPf.rounds ? localPf.rounds.length : 0) + 1;
+      showStatusMessage(`확인 완료! ${name} 학생 영어 실전 모의평가(25문항) 시작`, 'success');
+      setTimeout(() => beginExam(generateEnglishExamStep3()), 300);
+    }
+
+    function handleCheckPortfolioFromIntro(event) {
+      if (event) { event.preventDefault(); event.stopPropagation(); }
+      const pin = document.getElementById('inputPin').value.trim();
+      const name = document.getElementById('inputName').value.trim();
+      if (!pin) {
+        showStatusMessage('핀번호를 입력해주세요.', 'error');
+        return;
+      }
+      state.studentPin = pin;
+      state.studentName = name || '학생';
+      document.getElementById('screenIntro').classList.add('hidden');
+      document.getElementById('screenPortfolio').classList.remove('hidden');
+      fetchAndRenderPortfolio(pin);
+    }
+
+    function beginExam(questions) {
+      state.examQuestions = questions;
+      state.examSubmitted = false;
+      state.examStartTime = Date.now();
+
+      document.getElementById('screenIntro').classList.add('hidden');
+      document.getElementById('screenResult').classList.add('hidden');
+      document.getElementById('screenPortfolio').classList.add('hidden');
+      document.getElementById('screenExam').classList.remove('hidden');
+
+      document.getElementById('headerExamInfo').classList.remove('hidden');
+      document.getElementById('headerStudentName').textContent = `${state.studentName} (${state.studentPin})`;
+
+      buildOmrMinimap();
+      loadQuestion(0);
+
+      clearInterval(state.timerInterval);
+      updateTimerDisplay();
+      state.timerInterval = setInterval(() => {
+        state.timeRemaining--;
+        updateTimerDisplay();
+        if (state.timeRemaining <= 0) {
+          clearInterval(state.timerInterval);
+          submitExam(true);
+        }
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const min = Math.floor(Math.max(0, state.timeRemaining) / 60);
+      const sec = Math.max(0, state.timeRemaining) % 60;
+      const el = document.getElementById('timerDisplay');
+      el.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+      if (state.timeRemaining < 300) el.classList.add('urgent-timer');
+    }
+
+    function buildOmrMinimap() {
+      const grid = document.getElementById('omrGrid');
+      grid.innerHTML = '';
+      let answered = 0;
+
+      state.examQuestions.forEach((q, idx) => {
+        const isAns = state.userAnswers[idx] !== undefined;
+        if (isAns) answered++;
+        const isCurr = (idx === state.currentQuestionIndex);
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = idx + 1;
+        let cls = "h-8 rounded-lg font-mono text-xs font-bold transition flex items-center justify-center border relative ";
+        if (isCurr) cls += "border-blue-700 ring-2 ring-blue-600 ";
+        else cls += "border-slate-200 ";
+
+        if (isAns) cls += "bg-blue-600 text-white";
+        else cls += "bg-slate-50 text-slate-600 hover:bg-slate-100";
+
+        btn.className = cls;
+
+        const diffColor = q.difficulty === '상' ? 'bg-rose-500' : (q.difficulty === '중' ? 'bg-blue-500' : 'bg-emerald-500');
+        const dot = document.createElement('span');
+        dot.className = `w-1.5 h-1.5 rounded-full absolute top-1 right-1 ${diffColor}`;
+        btn.appendChild(dot);
+
+        btn.onclick = () => loadQuestion(idx);
+        grid.appendChild(btn);
+      });
+
+      document.getElementById('answeredCountBadge').textContent = `${answered} / 25 완료`;
+    }
+
+    function loadQuestion(index) {
+      if (!state.examQuestions || index < 0 || index >= state.examQuestions.length) return;
+      state.currentQuestionIndex = index;
+      const q = state.examQuestions[index];
+
+      document.getElementById('qBadgeNum').textContent = `[${String(q.qNum).padStart(2, '0')}]`;
+      const diffBadge = document.getElementById('qBadgeDiff');
+      diffBadge.textContent = `난이도: ${q.difficulty}`;
+      diffBadge.className = q.difficulty === '상' ? "text-xs px-2 py-0.5 rounded-md font-bold text-white bg-rose-600" : (q.difficulty === '하' ? "text-xs px-2 py-0.5 rounded-md font-bold text-white bg-emerald-600" : "text-xs px-2 py-0.5 rounded-md font-bold text-white bg-blue-600");
+
+      document.getElementById('qBadgeUnit').textContent = q.unit;
+      document.getElementById('qBadgeTopic').textContent = q.subTopic;
+
+      const pBox = document.getElementById('qPassageContainer');
+      if (q.passage && q.passage.trim().length > 0) {
+        pBox.textContent = q.passage;
+        pBox.classList.remove('hidden');
+      } else {
+        pBox.classList.add('hidden');
+      }
+
+      document.getElementById('qText').textContent = q.text;
+
+      const cContainer = document.getElementById('qChoices');
+      cContainer.innerHTML = '';
+      const icons = ['①', '②', '③', '④', '⑤'];
+
+      q.choices.forEach((cText, cIdx) => {
+        const isSel = state.userAnswers[index] === cIdx;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `w-full text-left choice-card p-3 sm:p-4 rounded-xl border border-slate-200 flex items-start space-x-3 transition ${isSel ? 'selected' : 'bg-white'}`;
+        btn.innerHTML = `
+          <span class="w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${isSel ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-700'}">${icons[cIdx]}</span>
+          <span class="text-xs sm:text-sm font-medium flex-1 leading-relaxed">${cText}</span>
+        `;
+        btn.onclick = () => { state.userAnswers[index] = cIdx; buildOmrMinimap(); loadQuestion(index); };
+        cContainer.appendChild(btn);
+      });
+
+      document.getElementById('btnPrevQ').disabled = (index === 0);
+      const isLast = (index === state.examQuestions.length - 1);
+      document.getElementById('btnNextQ').classList.toggle('hidden', isLast);
+      document.getElementById('btnFinishExam').classList.toggle('hidden', !isLast);
+    }
+
+    function navigateQuestion(dir) {
+      const next = state.currentQuestionIndex + dir;
+      if (next >= 0 && next < state.examQuestions.length) loadQuestion(next);
+    }
+
+    function confirmSubmitExam() {
+      const total = state.examQuestions.length;
+      const answered = Object.keys(state.userAnswers).length;
+      const unanswered = total - answered;
+
+      let msg = "답안을 최종 제출하시겠습니까?";
+      if (unanswered > 0) {
+        msg = `아직 풀지 않은 문제가 ${unanswered}개 있습니다. 이대로 제출하시겠습니까?`;
+      }
+
+      showModal('confirm', '영어 최종 답안 제출', msg, () => submitExam(false), true);
+    }
+
+    async function submitExam(auto) {
+      clearInterval(state.timerInterval);
+      state.examSubmitted = true;
+
+      let score = 0;
+      let d1 = 0, d2 = 0, d3 = 0, d4 = 0;
+      let hardC = 0, hardT = 0, medC = 0, medT = 0, easyC = 0, easyT = 0;
+      const itemLogs = [];
+
+      state.examQuestions.forEach((q, idx) => {
+        const userC = state.userAnswers[idx];
+        const isCorrect = (userC === q.answer);
+
+        if (q.difficulty === '상') { hardT++; if (isCorrect) hardC++; }
+        else if (q.difficulty === '하') { easyT++; if (isCorrect) easyC++; }
+        else { medT++; if (isCorrect) medC++; }
+
+        if (isCorrect) {
+          score += 4;
+          if (q.unit === "문맥 어휘 & 영영") d1 += 4;
+          else if (q.unit === "핵심 문법 어법") d2 += 4;
+          else if (q.unit === "본문 심층 독해") d3 += 4;
+          else if (q.unit === "의사소통 (L&S)") d4 += 4;
+        }
+
+        itemLogs.push({ qNum: `Q${q.qNum}`, unit: q.unit, subTopic: q.subTopic, isCorrect: isCorrect });
+      });
+      if (score > 100) score = 100;
+
+      const timeSpent = EXAM_DURATION_SEC - state.timeRemaining;
+
+      state.scoreData = {
+        totalScore: score,
+        domain1Score: d1,
+        domain2Score: d2,
+        domain3Score: d3,
+        domain4Score: d4,
+        hardC, hardT, medC, medT, easyC, easyT,
+        itemLogs
+      };
+
+      saveStudentPortfolioLocally(state.studentPin, state.studentName, {
+        round: state.currentExamRound,
+        totalScore: score,
+        domain1Score: d1,
+        domain2Score: d2,
+        domain3Score: d3,
+        domain4Score: d4,
+        date: new Date().toLocaleDateString()
+      }, itemLogs);
+
+      document.getElementById('screenExam').classList.add('hidden');
+      document.getElementById('screenResult').classList.remove('hidden');
+
+      document.getElementById('resultStudentMeta').textContent = `${state.studentName} (${state.studentPin}) · 응시 회차: ${state.currentExamRound}회`;
+      document.getElementById('resTotalScore').textContent = score;
+      document.getElementById('resScoreSummary').textContent = `정답 ${Math.round(score / 4)}개 / 오답 ${25 - Math.round(score / 4)}개`;
+
+      document.getElementById('resDomain1Score').textContent = `${d1}점`;
+      document.getElementById('resDomain2Score').textContent = `${d2}점`;
+      document.getElementById('resDomain3Score').textContent = `${d3}점`;
+      document.getElementById('resDomain4Score').textContent = `${d4}점`;
+
+      document.getElementById('resDiffHard').textContent = `${hardC} / ${hardT}`;
+      document.getElementById('resDiffMed').textContent = `${medC} / ${medT}`;
+      document.getElementById('resDiffEasy').textContent = `${easyC} / ${easyT}`;
+
+      renderReview();
+
+      // Dual-channel Google Sheets Sync: JSONP fallback + POST fetch
+      const syncEl = document.getElementById('syncStatusBadge');
+      const submitPayload = {
+        pin: state.studentPin,
+        name: state.studentName,
+        totalScore: score,
+        domain1Score: d1,
+        domain2Score: d2,
+        domain3Score: d3,
+        domain4Score: d4,
+        timeSpentSec: timeSpent
+      };
+
+      let synced = false;
+      try {
+        const jsonpRes = await callServerJsonp('SUBMIT_EXAM', { data: submitPayload }, 5000);
+        if (jsonpRes && jsonpRes.success) {
+          synced = true;
+          if (syncEl) syncEl.innerHTML = '<span class="text-emerald-600"><i class="fa-solid fa-cloud-arrow-up mr-1"></i>구글 시트에 성공적으로 저장되었습니다!</span>';
+        }
+      } catch (err) {
+        console.warn("JSONP submit fallback to direct fetch:", err);
+      }
+
+      if (!synced) {
+        try {
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'SUBMIT_EXAM',
+              data: submitPayload
+            })
+          }).then(() => {
+            if (syncEl) syncEl.innerHTML = '<span class="text-emerald-600"><i class="fa-solid fa-cloud-arrow-up mr-1"></i>구글 시트 전송 완료 (로컬 &amp; 시트 동기화)</span>';
+          }).catch(() => {
+            if (syncEl) syncEl.innerHTML = '<span class="text-blue-600"><i class="fa-solid fa-hard-drive mr-1"></i>로컬 포트폴리오에 안전하게 저장되었습니다.</span>';
+          });
+        } catch (e) {
+          if (syncEl) syncEl.innerHTML = '<span class="text-blue-600"><i class="fa-solid fa-hard-drive mr-1"></i>로컬 포트폴리오에 저장되었습니다.</span>';
+        }
+      }
+    }
+
+    function renderReview() {
+      const container = document.getElementById('reviewQuestionsContainer');
+      container.innerHTML = '';
+      const icons = ['①', '②', '③', '④', '⑤'];
+
+      state.examQuestions.forEach((q, idx) => {
+        const userC = state.userAnswers[idx];
+        const isCorrect = (userC === q.answer);
+        if (state.reviewFilter === 'WRONG' && isCorrect) return;
+
+        const card = document.createElement('div');
+        card.className = `p-4 sm:p-5 rounded-xl border ${isCorrect ? 'bg-slate-50 border-slate-200' : 'bg-red-50/40 border-red-200'} space-y-2.5`;
+        
+        let passageHtml = '';
+        if (q.passage) {
+          passageHtml = `<div class="passage-box p-3 rounded-lg text-xs text-slate-800 whitespace-pre-line">${q.passage}</div>`;
+        }
+
+        card.innerHTML = `
+          <div class="flex justify-between items-center text-xs font-bold">
+            <span class="text-slate-800">[Q${q.qNum}] ${q.unit} &middot; ${q.subTopic} (난이도: ${q.difficulty})</span>
+            <span class="${isCorrect ? 'text-emerald-700' : 'text-rose-600'}">${isCorrect ? '정답' : '오답'}</span>
+          </div>
+          ${passageHtml}
+          <div class="text-sm font-medium text-slate-900">${q.text}</div>
+          <div class="text-xs bg-white p-2.5 rounded-lg border border-slate-200">
+            <div>내 답: <strong>${userC !== undefined ? icons[userC] + ' ' + q.choices[userC] : '미응답'}</strong></div>
+            <div>정답: <strong class="text-blue-700">${icons[q.answer]} ${q.choices[q.answer]}</strong></div>
+          </div>
+          <div class="text-xs bg-blue-50/70 p-2.5 rounded-lg border border-blue-200 text-slate-700">
+            <strong>해설:</strong> ${q.explanation}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function setReviewFilter(f) {
+      state.reviewFilter = f;
+      document.getElementById('filterTabAll').className = f === 'ALL' ? "px-3 py-1.5 rounded-lg bg-white shadow-xs text-slate-900 transition" : "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
+      document.getElementById('filterTabWrong').className = f === 'WRONG' ? "px-3 py-1.5 rounded-lg bg-white shadow-xs text-slate-900 transition" : "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
+      renderReview();
+    }
+
+    function handleRestartClinic() {
+      const wrong = state.examQuestions.filter((q, idx) => state.userAnswers[idx] !== q.answer);
+      if (wrong.length === 0) {
+        showModal('alert', '안내', '틀린 문항이 없습니다! 100점 만점을 축하합니다.', null, false);
+        return;
+      }
+      state.userAnswers = {};
+      beginExam(wrong);
+    }
+
+    function handleViewPortfolio() {
+      document.getElementById('screenResult').classList.add('hidden');
+      document.getElementById('screenPortfolio').classList.remove('hidden');
+      fetchAndRenderPortfolio(state.studentPin);
+    }
+
+    function handleBackFromPortfolio() {
+      document.getElementById('screenPortfolio').classList.add('hidden');
+      if (state.scoreData) document.getElementById('screenResult').classList.remove('hidden');
+      else document.getElementById('screenIntro').classList.remove('hidden');
+    }
+
+    function fetchAndRenderPortfolio(pin) {
+      const local = getStudentPortfolioLocally(pin);
+      if (local && local.rounds) {
+        renderPortfolioCharts(local);
+        generateAiFeedback(local);
+      }
+    }
+
+    function generateAiFeedback(data) {
+      const avg = data.rounds && data.rounds.length > 0
+        ? Math.round(data.rounds.reduce((acc, r) => acc + r.totalScore, 0) / data.rounds.length)
+        : 80;
+
+      let feedback = "";
+      if (avg >= 90) {
+        feedback = `${state.studentName} 학생은 Lesson 5와 Lesson 6의 지문 문맥 어휘, 관계부사 및 분사구문의 핵심 문법, 다빈치와 심리학 본문 독해 등 전 영역에서 매우 탁월한 성취를 보이고 있습니다. 실전 지필평가 100점 만점을 기대할 수 있습니다!`;
+      } else if (avg >= 75) {
+        feedback = `${state.studentName} 학생은 전반적인 독해 흐름과 의사소통 표현을 안정적으로 파악하고 있습니다. 다만, 고난도 [상] 문항인 '분사구문의 수동태/시제 전환'과 '지문 속 문맥상 부적절한 어휘 추론' 파트에서 오답 노트를 복습하면 고득점을 완성할 수 있습니다.`;
+      } else {
+        feedback = `${state.studentName} 학생은 교과서 본문 지문 내용(원더우먼 자세 효과, 다빈치의 요리 발명품)과 기본 관계부사 규칙(the way와 how 중복 금지 등)을 먼저 꼼꼼하게 점검하고 '오답 클리닉'을 통해 반복 학습하시기 바랍니다.`;
+      }
+      document.getElementById('portfolioAiFeedback').textContent = feedback;
+    }
+
+    function renderPortfolioCharts(data) {
+      document.getElementById('portfolioStudentName').textContent = state.studentName;
+      document.getElementById('portfolioPinBadge').textContent = `PIN: ${state.studentPin}`;
+
+      const rCanvas = document.getElementById('chartScoreRounds').getContext('2d');
+      if (roundsChartInstance) roundsChartInstance.destroy();
+      roundsChartInstance = new Chart(rCanvas, {
+        type: 'line',
+        data: {
+          labels: data.rounds.map(r => `${r.round}회차`),
+          datasets: [{
+            label: '총점 (100점 만점)',
+            data: data.rounds.map(r => r.totalScore),
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+            borderWidth: 2.5,
+            tension: 0.3,
+            fill: true,
+            pointRadius: 5,
+            pointBackgroundColor: '#1d4ed8'
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 100 } } }
+      });
+
+      const stats = data.domainStats || {};
+      const radarValues = DOMAIN_KEYS.map(k => {
+        if (stats[k] && stats[k].total > 0) {
+          return Math.round((stats[k].correct / stats[k].total) * 100);
+        }
+        return 85;
+      });
+
+      const dCanvas = document.getElementById('chartDomainRadar').getContext('2d');
+      if (radarChartInstance) radarChartInstance.destroy();
+      radarChartInstance = new Chart(dCanvas, {
+        type: 'radar',
+        data: {
+          labels: DOMAIN_KEYS,
+          datasets: [{
+            label: '영역별 성취도 (%)',
+            data: radarValues,
+            borderColor: '#1d4ed8',
+            backgroundColor: 'rgba(29, 78, 216, 0.2)',
+            pointBackgroundColor: '#1e3a8a'
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { r: { min: 0, max: 100 } } }
+      });
+    }
+
+    function showModal(type, title, desc, onConfirm, cancel) {
+      const modal = document.getElementById('customModal');
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      const group = document.getElementById('modalButtons');
+      group.innerHTML = '';
+
+      if (cancel) {
+        const cBtn = document.createElement('button');
+        cBtn.type = 'button';
+        cBtn.className = "px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-xl";
+        cBtn.textContent = '취소';
+        cBtn.onclick = () => modal.classList.add('hidden');
+        group.appendChild(cBtn);
+      }
+
+      const oBtn = document.createElement('button');
+      oBtn.type = 'button';
+      oBtn.className = "px-5 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl";
+      oBtn.textContent = '확인';
+      oBtn.onclick = () => { modal.classList.add('hidden'); if (onConfirm) onConfirm(); };
+      group.appendChild(oBtn);
+
+      modal.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
